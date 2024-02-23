@@ -1,0 +1,16 @@
+APScheduler==3.6.3
+asgiref==3.7.2
+cachetools==4.2.2
+certifi==2023.11.17
+Django==4.1
+pillow==10.2.0
+python-dotenv==1.0.0
+python-telegram-bot==13.7
+pytz==2023.3.post1
+qrcode==5.1
+six==1.16.0
+SQLAlchemy==2.0.25
+sqlparse==0.4.4
+tornado==6.4
+typing_extensions==4.9.0
+tzlocal==5.2
