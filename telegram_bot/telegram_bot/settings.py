@@ -30,6 +30,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tgm.apps.TgmConfig',
+    'product.apps.ProductConfig',
+    'data.apps.DataConfig',
 ]
 
 MIDDLEWARE = [
@@ -122,3 +125,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 T_BOT_TOKEN = os.getenv('T_BOT_TOKEN')
 T_BOT_NAME = os.getenv('T_BOT_NAME')
+T_BOT_URL = f'https://t.me/{T_BOT_NAME}?start='
