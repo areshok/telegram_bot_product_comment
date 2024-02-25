@@ -127,3 +127,5 @@ DATA_ROOT = BASE_DIR / 'data'
 T_BOT_TOKEN = os.getenv('T_BOT_TOKEN')
 T_BOT_NAME = os.getenv('T_BOT_NAME')
 T_BOT_URL = f'https://t.me/{T_BOT_NAME}?start='
+
+COUNT_BUTTONS_IN_LINE = 2
