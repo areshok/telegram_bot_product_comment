@@ -71,7 +71,6 @@ def generate_qrcode(sender, instance, created, *args, **kwargs):
     Функция отрабатывает при создании файла"""
 
     if created:
-        print(instance)
         url = settings.T_BOT_URL + str(instance.id)
         qr = qrcode.QRCode(
             version=1,
@@ -110,6 +109,9 @@ class ProductMarketplace(models.Model):
         on_delete=models.CASCADE
     )
     url = models.TextField()
+
+    def __str__(self):
+        return f'{self.product} - {self.marketplace}'
 
 class Score(models.Model):
     score = models.PositiveIntegerField(

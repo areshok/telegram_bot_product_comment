@@ -122,6 +122,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+DATA_ROOT = BASE_DIR / 'data'
 
 T_BOT_TOKEN = os.getenv('T_BOT_TOKEN')
 T_BOT_NAME = os.getenv('T_BOT_NAME')
