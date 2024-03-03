@@ -9,4 +9,4 @@ def index(request):
         'comments': comments,
 
     }
-    return render(request, 'index.html', context)
+    return render(request, 'base.html', context)
