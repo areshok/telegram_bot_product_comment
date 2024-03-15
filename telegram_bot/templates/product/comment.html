@@ -1,0 +1,38 @@
+{% extends  'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Отзывы
+{% endblock %}
+{% block content %}
+<h2>Отзывы</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>User</th>
+            <th>Score</th>
+            <th>Comment</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for comment in page_obj %}
+        <tr>
+            <th>{{ comment.product }}</th>
+            <th>{{ comment.user_telegram.username }}</th>
+            <th>{{ comment.user_score}}</th>
+            <th>{{ comment.comment }}</th>
+            <th>{{ comment.status }}</th>
+            <th><a href="{% url 'product:comment_detail' comment.id %}">Подробнее</a></th>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+{% endblock %}
+
+        
+
+

@@ -1,22 +1,62 @@
 {% load static %}
+
+<!--Страница-->
+<!doctype html>
 <html>
+    <!--Голова страницы-->
     <head>
+        <!--Титул страницы -->
+        <meta charset="utf-8">
+        <link type="text/css" rel="stylesheet" href="{% static 'base.css' %}"/>
         <title>
-            {% block title %}base{% endblock %}
+            {% block title %}
+            {% endblock %}
         </title>
-        <nav class="top-menu">
-            <a class="navbar-logo" href=""><img src=""></a>
-            <ul class="menu-main">
-              <li><a href="">Work</a></li>
-              <li><a href="">About</a></li>
-              <li><a href="">Story</a></li>
-              <li><a href="">Shop</a></li>
-              <li><a href="">Gallery</a></li>
-              <li><a href="">Contact</a></li>
-            </ul>
-          </nav>
-    </head>
-    <body>
+        <!--Стили страницы-->
         
+
+    </head>
+    <!--Тело страницы-->
+    <body>
+        <!--Меню пользователя-->
+        <div class="header">
+            <ul>
+                {% if user.is_authenticated %}
+                <li>{{ user.username }}</li>
+                <li>Выход</li>
+                {% else %}
+                <li>Вход</li>
+                {% endif %}
+            </ul>
+        </div>
+        
+
+        <div class="menu">
+            <ul>
+                <li><a href="{% url 'product:index' %}">Главная</a></li>
+                <li><a href="{% url 'product:comments' %}">Отзывы</a></li>
+                <li><a href="">Создать товар</a></li>
+                <li>Рассылка</li>
+                <li>Маркетплейсы</li>
+                <li>Оценки</li>
+                <br>
+                {% if user.is_superuser %}
+                <li>Пользователи</li>
+                <li>Создать пользователя</li>
+                <li>Оценки</li>
+                {%endif%}
+            </ul>
+        </div>
+
+        <div class="main">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+
+        <div id="footer">
+            {% include "includes/paginator.html"%}
+        </div>
+
     </body>
 </html>

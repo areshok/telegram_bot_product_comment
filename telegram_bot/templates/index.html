@@ -1,30 +1,10 @@
+{% extends  'base.html' %}
 {% load static %}
 
-<table>
-    <thead>
-        <tr>
-            <th>Product</th>
-            <th>User</th>
-            <th>Score</th>
-            <th>Comment</th>
-            <th>Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for comment in comments %}
-        <tr>
-            <th>{{ comment.product }}</th>
-            <th>{{ comment.user_telegram }}</th>
-            <th>{{ comment.user_score}}</th>
-            <th>{{ comment.comment }}</th>
-            <th>{{ comment.status }}</th>
-        </tr>
-        {% endfor %}
-    </tbody>
+{% block title %}
+Главная траница
+{% endblock %}
 
-</table>
-
-
-        
-
-
+{% block content %}
+<h2>Домашняя страница</h2>
+{% endblock %}

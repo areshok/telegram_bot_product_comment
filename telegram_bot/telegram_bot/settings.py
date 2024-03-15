@@ -112,7 +112,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATICFILES_DIRS = [
+   os.path.join(BASE_DIR, "static"),
+]
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -129,3 +131,4 @@ T_BOT_NAME = os.getenv('T_BOT_NAME')
 T_BOT_URL = f'https://t.me/{T_BOT_NAME}?start='
 
 COUNT_BUTTONS_IN_LINE = 2
+ELEMENT_IN_PAGE = 10
