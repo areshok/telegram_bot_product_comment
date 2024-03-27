@@ -1,0 +1,17 @@
+{% extends  'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Отзыв
+{% endblock %}
+
+{% block content %}
+
+<p>{{ comment.product }}</p>
+<p>{{ comment.user_telegram.username }}</p>
+<p>{{ comment.user_score }}</p>
+<p>{{ comment.comment }}</p>
+
+
+{% endblock %}

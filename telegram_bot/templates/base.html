@@ -1,0 +1,62 @@
+{% load static %}
+
+<!--Страница-->
+<!doctype html>
+<html>
+    <!--Голова страницы-->
+    <head>
+        <!--Титул страницы -->
+        <meta charset="utf-8">
+        <link type="text/css" rel="stylesheet" href="{% static 'base.css' %}"/>
+        <title>
+            {% block title %}
+            {% endblock %}
+        </title>
+        <!--Стили страницы-->
+        
+
+    </head>
+    <!--Тело страницы-->
+    <body>
+        <!--Меню пользователя-->
+        <div class="header">
+            <ul>
+                {% if user.is_authenticated %}
+                <li>{{ user.username }}</li>
+                <li>Выход</li>
+                {% else %}
+                <li>Вход</li>
+                {% endif %}
+            </ul>
+        </div>
+        
+
+        <div class="menu">
+            <ul>
+                <li><a href="{% url 'product:index' %}">Главная</a></li>
+                <li><a href="{% url 'product:comments' %}">Отзывы</a></li>
+                <li><a href="">Создать товар</a></li>
+                <li>Рассылка</li>
+                <li>Маркетплейсы</li>
+                <li>Оценки</li>
+                <br>
+                {% if user.is_superuser %}
+                <li>Пользователи</li>
+                <li>Создать пользователя</li>
+                <li>Оценки</li>
+                {%endif%}
+            </ul>
+        </div>
+
+        <div class="main">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+
+        <div id="footer">
+            {% include "includes/paginator.html"%}
+        </div>
+
+    </body>
+</html>
