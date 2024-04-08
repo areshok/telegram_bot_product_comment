@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import sys
 
 from dotenv import load_dotenv
 
@@ -9,16 +10,36 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-c-%_&i!y1b^vkay+09hs9c)wzjl47&arvvvuekdf1%ilml-27@'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+
+
+#check run env or sys
+if sys.prefix != sys.base_prefix:
+    print('env')
+    DEBUG = True
+    ALLOWED_HOSTS = []
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    print('sys')
+    DEBUG = False
+    ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'sys_db.sqlite3',
+        }
+    }
+
+
+
 
 
 # Application definition
@@ -30,8 +51,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'tgm.apps.TgmConfig',
     'product.apps.ProductConfig',
+    'api.apps.ApiConfig',
     'data.apps.DataConfig',
 ]
 
@@ -65,16 +88,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'telegram_bot.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 
 # Password validation
@@ -132,3 +145,13 @@ T_BOT_URL = f'https://t.me/{T_BOT_NAME}?start='
 
 COUNT_BUTTONS_IN_LINE = 2
 ELEMENT_IN_PAGE = 10
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+
+
+}
+
